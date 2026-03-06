@@ -1,0 +1,15 @@
+.section, .textSection
+{
+    margin-bottom: 3rem;
+    padding: 2rem 1rem;
+}
+
+.section:first-of-type
+{
+    padding: 1rem 1rem;
+}
+
+.textSection
+{
+    max-width: 900px;
+}
