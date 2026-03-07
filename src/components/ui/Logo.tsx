@@ -1,18 +1,24 @@
 import React from "react";
-import styles from "./Logo.module.css";
+import Row from "../layout/Row";
+import Icon from "./Icon";
 
-type LogoProps =
-{
-    alt?: string;
-    src: string;
-}
-
-function Logo({alt = "Logo", src}: LogoProps): React.JSX.Element
+function Logo(): React.JSX.Element
 {
     return (
-        <div className={styles.logo}>
-            <img src={src} alt={alt} />
-        </div>
+        <a className="
+            pr-4
+            no-underline
+            rounded-xl
+            bg-neutral-900
+            border
+            border-neutral-700
+        "
+        href="#">
+            <Row>
+                <Icon src="/assets/images/favicon.png" alt="logo" />
+                <span className="text-xl font-bold">Mykal Sullivan</span>
+            </Row>
+        </a>
     );
 }
 

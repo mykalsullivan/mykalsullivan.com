@@ -1,12 +1,21 @@
 import React from "react";
 
-function Icon(): React.JSX.Element
+type IconProps =
 {
-    return (
-        <div className={"icon"}>
+    src: string;
+    alt?: string;
+}
 
-        </div>
-    );
+function Icon({src, alt = "logo"}: IconProps): React.JSX.Element
+{
+    return <img
+        className="
+            h-full
+            w-auto
+            rounded-2xl
+        "
+        alt={alt}
+        src={src} />;
 }
 
 export default Icon;

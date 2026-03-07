@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Panel.module.css";
 
 type PanelProps =
 {
@@ -19,10 +18,10 @@ function Panel(
     const [collapsed, setCollapsed] = React.useState(false);
 
     return (
-        <div className={styles.panel}>
-            <div className={styles.panelHeader}>
-                <span className={styles.panelHeaderTitle}>{title}</span>
-                <div className={styles.panelActions}>
+        <div className="">
+            <div className="">
+                <span className="">{title}</span>
+                <div className="">
                     {actions}
                     {collapsible && (
                         <button onClick={() => setCollapsed(!collapsed)}>
@@ -33,7 +32,7 @@ function Panel(
             </div>
 
             {!collapsed && (
-                <div className={styles.panelContent}>
+                <div className="">
                     {children}
                 </div>
             )}

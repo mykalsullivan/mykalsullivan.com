@@ -1,9 +1,16 @@
 import React from "react";
 
-function Container(): React.JSX.Element
+type ContainerProps =
+{
+    children: React.ReactNode;
+}
+
+function Container({children}: ContainerProps): React.JSX.Element
 {
     return (
-        <></>
+        <div className="max-w-6xl mx-auto px-4">
+            {children}
+        </div>
     );
 }
 

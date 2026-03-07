@@ -1,10 +1,21 @@
 import React from "react";
 
-function Card(): React.JSX.Element
+type CardProps =
+{
+    children: React.ReactNode;
+}
+
+function Card({children}: CardProps): React.JSX.Element
 {
     return (
-        <div className={"card"}>
-
+        <div className="
+            border
+            border-neutral-700
+            rounded-xl
+            h-full
+            w-full
+        ">
+            {children}
         </div>
     );
 }

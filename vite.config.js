@@ -3,9 +3,12 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig(
 {
-    server: { core: true },
+    server:
+    {
+        core: true
+    },
     plugins:
     [
-        react()
+        react(),
     ]
 });

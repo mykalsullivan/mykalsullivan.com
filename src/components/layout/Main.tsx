@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Main.module.css";
 
 type MainProps =
 {
@@ -8,7 +7,13 @@ type MainProps =
 
 function Main({children}: MainProps)
 {
-    return <main className={styles.main}>{children}</main>;
+    return <main className="
+        flex flex-col
+        max-w-300
+        mx-auto"
+    >
+        {children}
+    </main>;
 }
 
 export default Main;

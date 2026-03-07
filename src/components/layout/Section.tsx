@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Section.module.css";
 
 type SectionProps =
 {
@@ -8,7 +7,14 @@ type SectionProps =
 
 function Section({children}: SectionProps)
 {
-    return <section className={styles.section}>{children}</section>;
+    return <section className="
+        mb-12
+        px-4
+        py-8
+        first:p-4"
+    >
+        {children}
+    </section>;
 }
 
 export default Section;
