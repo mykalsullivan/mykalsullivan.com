@@ -4,21 +4,23 @@ import Header from "./components/ui/Header";
 import PortfolioPage from "./pages/portfolio/PortfolioPage";
 import BlogPage from "./pages/blog/BlogPage";
 import AboutPage from "./pages/about/AboutPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import PortfolioFooter from "./pages/portfolio/sections/PortfolioFooter";
 
 function App() : React.JSX.Element
 {
     return (
         <>
-            <Header />
             <BrowserRouter>
+                <Header />
                 <Routes>
                     <Route path="/" element={<PortfolioPage />} />
                     <Route path="/blog" element={<BlogPage />} />
                     <Route path="/about" element={<AboutPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Routes>
+                <PortfolioFooter />
             </BrowserRouter>
-            <PortfolioFooter />
         </>
     );
 }

@@ -2,8 +2,7 @@ import React from "react";
 import Section from "../../../components/layout/Section.tsx";
 import Article from "../../../components/layout/Article.tsx";
 import Container from "../../../components/layout/Container";
-import Row from "../../../components/layout/Row.tsx";
-import Column from "../../../components/layout/Column.tsx";
+import Flex from "../../../components/layout/Flex.tsx";
 import Icon from "../../../components/ui/Icon.tsx";
 import Card from "../../../components/ui/Card.tsx";
 import Form from "../../../components/form/Form.tsx";
@@ -27,16 +26,16 @@ function LinkCard({iconPath, iconAlt, siteName, description}: LinkCardProps): Re
 {
     return (
         <Card>
-            <Row>
-                <Row>
-                    <Column>
+            <Flex>
+                <Flex>
+                    <Flex type="col">
                         <Icon src={`/assets/images/${iconPath}`} alt={iconAlt} />
                         <p>{siteName}</p>
-                    </Column>
+                    </Flex>
                     <p>{description}</p>
-                </Row>
+                </Flex>
                 <Arrow />
-            </Row>
+            </Flex>
         </Card>
     );
 }
@@ -45,10 +44,10 @@ function LinksArticle(): React.JSX.Element
 {
     return (
         <Article>
-            <Row>
+            <Flex>
                 <LinkCard iconPath="github" iconAlt="github" siteName="github" description="My public projects" />
                 <LinkCard iconPath="linkedin" iconAlt="github" siteName="linkedin" description="LinkedIn" />
-            </Row>
+            </Flex>
         </Article>
     );
 }
@@ -56,7 +55,7 @@ function LinksArticle(): React.JSX.Element
 function NameFormField(): React.JSX.Element
 {
     return (
-        <Column align="start" gap={2}>
+        <Flex type="col" align="start" gap={2}>
             <p>Name:</p>
             <div className="
                 w-full
@@ -65,14 +64,14 @@ function NameFormField(): React.JSX.Element
                 rounded-lg
             ">
             </div>
-        </Column>
+        </Flex>
     );
 }
 
 function EmailFormField(): React.JSX.Element
 {
     return (
-        <Column align="start" gap={2}>
+        <Flex type="col" align="start" gap={2}>
             <p>Email:</p>
             <div className="
                 w-full
@@ -81,14 +80,14 @@ function EmailFormField(): React.JSX.Element
                 rounded-lg
             ">
             </div>
-        </Column>
+        </Flex>
     );
 }
 
 function SubjectFormField(): React.JSX.Element
 {
     return (
-        <Column align="start" gap={2}>
+        <Flex type="col" align="start" gap={2}>
             <p>Subject:</p>
             <div className="
                 w-full
@@ -97,14 +96,14 @@ function SubjectFormField(): React.JSX.Element
                 rounded-lg
             ">
             </div>
-        </Column>
+        </Flex>
     );
 }
 
 function MessageFormField(): React.JSX.Element
 {
     return (
-        <Column align="start" gap={2}>
+        <Flex type="col" align="start" gap={2}>
             <p>Message:</p>
             <div className="
                 w-full
@@ -113,7 +112,7 @@ function MessageFormField(): React.JSX.Element
                 rounded-lg
             ">
             </div>
-        </Column>
+        </Flex>
     );
 }
 
@@ -121,14 +120,14 @@ function EmailForm(): React.JSX.Element
 {
     return (
         <Form>
-            <Column>
-                <Row>
+            <Flex type="col">
+                <Flex>
                     <NameFormField />
                     <EmailFormField />
-                </Row>
+                </Flex>
                 <SubjectFormField />
                 <MessageFormField />
-            </Column>
+            </Flex>
         </Form>
     );
 }
@@ -138,11 +137,13 @@ function EmailFormArticle(): React.JSX.Element
     return (
         <Article>
             <div className="
+                mx-auto
+                max-w-2xl
                 bg-neutral-900
                 rounded-xl
             ">
                 <Container>
-                    <h1>...or, reach out now (if you would like)</h1>
+                    <h1 className="text-2xl mb-4">...or, reach out now (if you would like)</h1>
                     <EmailForm />
                 </Container>
             </div>

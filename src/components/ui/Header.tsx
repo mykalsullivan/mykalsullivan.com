@@ -1,6 +1,6 @@
 import React from "react";
-import Row from "../layout/Row";
-import Navbar from "./Navbar";
+import Flex from "../layout/Flex.tsx";
+import Navbar from "../layout/Navbar.tsx";
 import Icon from "./Icon";
 
 function HeaderLogo(): React.JSX.Element
@@ -16,10 +16,10 @@ function HeaderLogo(): React.JSX.Element
             border-neutral-700
         "
            href="/">
-            <Row>
+            <Flex>
                 <Icon src="/assets/images/favicon.png" alt="logo" size="xl"/>
                 <span className="text-xl font-bold">Mykal Sullivan</span>
-            </Row>
+            </Flex>
         </a>
     );
 }
@@ -42,18 +42,18 @@ function Header() : React.JSX.Element
                 max-w-450
                 mx-4 my-2
             ">
-                <Row>
+                <Flex justify="between">
                     <HeaderLogo />
                     <Navbar>
-                        <Navbar.NavLink href="#summary">Summary</Navbar.NavLink>
-                        <Navbar.NavLink href="#skills">Skills</Navbar.NavLink>
-                        <Navbar.NavLink href="#contact">Contact</Navbar.NavLink>
+                        <Navbar.Link to="#summary">Summary</Navbar.Link>
+                        <Navbar.Link to="#skills">Skills</Navbar.Link>
+                        <Navbar.Link to="#contact">Contact</Navbar.Link>
                     </Navbar>
                     <Navbar>
-                        <Navbar.NavLink href="/blog">Blog</Navbar.NavLink>
-                        <Navbar.NavLink href="/about">About</Navbar.NavLink>
+                        <Navbar.Link to="/blog">Blog</Navbar.Link>
+                        <Navbar.Link to="/about">About</Navbar.Link>
                     </Navbar>
-                </Row>
+                </Flex>
             </div>
         </header>
     );
