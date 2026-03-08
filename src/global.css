@@ -1,12 +1,18 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+@import "tailwindcss";
 
 @layer base
 {
     html, body
     {
-        @apply font-sans h-full min-h-screen text-[0.95rem] text-white bg-gray-950 scroll-smooth leading-relaxed;
+        @apply font-sans
+                h-full
+                min-h-screen
+                text-[0.95rem]
+                text-neutral-300
+                bg-black
+                scroll-smooth
+                leading-relaxed;
         overflow-wrap: break-word;
         -webkit-font-smoothing: antialiased;
     }
@@ -18,7 +24,7 @@
 
     h1, h2, h3, h4, h5, h6
     {
-        @apply font-bold mt-8 mb-2;
+        @apply font-bold;
     }
 
     code

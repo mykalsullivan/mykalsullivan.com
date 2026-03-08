@@ -1,20 +1,24 @@
 import React from "react";
-import { Helmet } from "react-helmet";
-import Header from "./components/ui/Header.tsx";
-import Footer from "./components/ui/Footer.tsx";
-import PortfolioPage from "./pages/PortfolioPage.tsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/ui/Header";
+import PortfolioPage from "./pages/portfolio/PortfolioPage";
+import BlogPage from "./pages/blog/BlogPage";
+import AboutPage from "./pages/about/AboutPage";
+import PortfolioFooter from "./pages/portfolio/sections/PortfolioFooter";
 
 function App() : React.JSX.Element
 {
     return (
         <>
-            <Helmet>
-                <title>Mykal Sullivan</title>
-                <link rel={"icon"} href={"/assets/images/favicon.png"} />
-            </Helmet>
             <Header />
-            <PortfolioPage />
-            <Footer />
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<PortfolioPage />} />
+                    <Route path="/blog" element={<BlogPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                </Routes>
+            </BrowserRouter>
+            <PortfolioFooter />
         </>
     );
 }

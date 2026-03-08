@@ -11,7 +11,8 @@ export default
         {
             fontFamily:
             {
-                sans: ["Arial", "Helvetica", "sans-serif"]
+                sans: ["Arial", "Helvetica", "sans-serif"],
+                serif: ["Georgia", "Cambria", "serif"]
             },
         }
     },

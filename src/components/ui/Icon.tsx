@@ -4,18 +4,27 @@ type IconProps =
 {
     src: string;
     alt?: string;
+    size?: "sm" | "md" | "lg" | "xl";
 }
 
-function Icon({src, alt = "logo"}: IconProps): React.JSX.Element
+const sizeMap: Record<string, string> =
 {
-    return <img
-        className="
-            h-full
-            w-auto
-            rounded-2xl
-        "
+    sm: "w-6 h-6",
+    md: "w-8 h-8",
+    lg: "w-10 h-10",
+    xl: "w-12 h-12"
+};
+
+function Icon({src, alt = "logo", size = "xl"}: IconProps): React.JSX.Element
+{
+    return (
+        <img className={`
+            ${sizeMap[size]}
+            rounded-xl
+        `}
         alt={alt}
-        src={src} />;
+        src={src} />
+    );
 }
 
 export default Icon;

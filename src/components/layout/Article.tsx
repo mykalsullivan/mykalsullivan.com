@@ -2,12 +2,19 @@ import React from "react";
 
 type ArticleProps =
 {
-    children?: React.ReactNode;
+    children: React.ReactNode;
+    id?: string;
 }
 
-function Article({children}: ArticleProps)
+function Article({children, id}: ArticleProps): React.JSX.Element
 {
-    return <article className="max-w-7xl mx-auto p-6">{children}</article>;
+    return <article id={id}
+        className="
+            p-4
+        "
+    >
+        {children}
+    </article>;
 }
 
 export default Article;

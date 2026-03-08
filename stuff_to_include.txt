@@ -1,0 +1,65 @@
+SHORT VERSION (visible on homepage or as intro)
+├─ 2–3 sentences about what you do and why
+
+SYSTEMS & LOW-LEVEL PROGRAMMING
+├─ Languages: C/C++, Go, Bash/PowerShell, SQL
+├─ Key Skills: Memory management, sockets, serial programming, 
+│  application structure, debugging, data structures, algorithms
+├─ Tools: CMake, Vim, VS Code, Visual Studio, CLion
+├─ Currently Learning: Low-level socket programming, dial-up 
+│  modem implementation, serial programming
+├─ Projects: CursesGUI, TheBlkBox, Moduserve
+
+FULL-STACK & WEB DEVELOPMENT
+├─ Languages: JavaScript/TypeScript, HTML/CSS, Python, Java, C#
+├─ Frameworks: React.js, Node, Tailwind, .NET
+├─ Key Skills: REST API design, application structure, debugging
+├─ Tools: NPM, WebStorm, VS Code, Gradle
+├─ Currently Learning: Web API design
+├─ Projects: (This portfolio), Moduserve
+
+GAME DEVELOPMENT & GRAPHICS
+├─ Languages: C++, C#
+├─ Engines/Tools: Unreal Editor, Chameleon Engine, OpenGL
+├─ Key Skills: Game engine architecture, game modding, 
+│  data structures, algorithms
+├─ Tools: Blender, CLion, Unreal Editor
+├─ Currently Learning: Game engine development, OpenGL, 
+│  GUI app design, game modding
+├─ Projects: Chameleon Engine + subprojects
+
+INFRASTRUCTURE & NETWORKING
+├─ Technologies: Linux, Windows Server, Docker, QEMU/KVM, 
+│  Ansible, pfSense, Wireguard, Active Directory/Azure AD
+├─ Key Skills: CG-NAT networking, virtualization, dial-up server setup
+├─ Certifications: CompTIA A+, Linux+, Security+, Network+; 
+│  Microsoft AZ-900
+├─ Currently Learning: Low-level socket programming, serial programming
+├─ Past Projects: Multi-site VPN network (CG-NAT), Asterisk VoIP, 
+│  dial-up server
+├─ Tools: Cisco routers/switches, Ansible, QEMU/KVM
+
+AUDIO PRODUCTION & DSP
+├─ Skills: Mixing/mastering, audio effect chains (EQ, compression, 
+│  reverb, delay), signal routing, gain staging, DSP programming
+├─ Currently Learning: DSP programming
+├─ Tools: Digital audio production tools
+
+### Optional Extended "About Me" Page ###
+EXTENDED ABOUT (separate page, optional)
+├─ Your story
+│  └─ How you got into this (tinkering, specific projects,
+│     moments that hooked you)
+├─ What drives you
+│  └─ Why low-level systems matter to you, what fascinates you
+│     about complexity
+├─ Your approach
+│  └─ How you think about problems, your philosophy on code/infrastructure
+├─ Personality & interests
+│  └─ Music taste, what you do outside of work, what you're
+│     curious about (this is where death metal + jazz lives)
+├─ What you're looking for
+│  └─ Types of roles, companies, problems you want to solve
+├─ Fun facts / easter eggs
+│  └─ The K6-II Gentoo attempt, weird projects, things people
+│     are surprised to learn

@@ -8,7 +8,11 @@ type ContainerProps =
 function Container({children}: ContainerProps): React.JSX.Element
 {
     return (
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="
+            w-full
+            mx-auto
+            p-4
+        ">
             {children}
         </div>
     );

@@ -16,10 +16,11 @@ Navbar.NavLink = function NavLink(
                 block
                 px-4 py-1
                 text-center text-neutral-400 no-underline
-                bg-neutral-900
+                bg-black/50
+                backdrop-blur-lg
+                rounded-lg
                 border
                 border-neutral-700
-                rounded-xl
                 transition-colors
                 duration-100
                 ease-in-out
@@ -44,7 +45,7 @@ function Navbar({children}: NavbarProps): React.JSX.Element
 {
     return (
         <nav className="my-auto">
-            <ul className="list-none pr-4">
+            <ul className="list-none">
                 <Row>
                     {children}
                 </Row>

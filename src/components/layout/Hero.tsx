@@ -1,20 +1,26 @@
 import React, {ReactNode} from "react";
+import Container from "./Container";
 
 type HeroProps =
 {
     children: ReactNode;
+    id?: string;
 }
 
-function Hero({children}: HeroProps): React.JSX.Element
+function Hero({children, id}: HeroProps): React.JSX.Element
 {
     return (
-        <section className="
-            flex flex-col
-            max-w-350
-            mx-auto"
+        <div id={id}
+             className="
+                flex flex-col
+                max-w-350
+                mx-auto
+            "
         >
-            {children}
-        </section>
+            <Container>
+                {children}
+            </Container>
+        </div>
     );
 }
 

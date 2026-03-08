@@ -9,12 +9,13 @@ function Card({children}: CardProps): React.JSX.Element
 {
     return (
         <div className="
-            border
-            border-neutral-700
-            rounded-xl
-            h-full
-            w-full
-        ">
+                w-full
+                h-full
+                border
+                border-neutral-700
+                rounded-xl
+            "
+        >
             {children}
         </div>
     );
