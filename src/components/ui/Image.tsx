@@ -4,18 +4,28 @@ type ImageProps =
 {
     src: string;
     alt?: string;
+    maintainAspectRatio?: boolean;
 }
 
-function Image({src, alt = "logo"}: ImageProps): React.JSX.Element
+function Image(
 {
+    src,
+    alt = "image",
+    maintainAspectRatio = true
+}: ImageProps): React.JSX.Element
+{
+    const aspectRatioString: string = maintainAspectRatio ? "cover" : "fill";
     return (
-        <img className="
-            w-full
-            h-full
-            rounded-xl
-        "
-        alt={alt}
-        src={src} />
+        <img
+            alt={alt}
+            src={src}
+            className={`
+                w-full
+                h-full
+                rounded-xl
+                ${aspectRatioString}
+            `}
+        />
     );
 }
 

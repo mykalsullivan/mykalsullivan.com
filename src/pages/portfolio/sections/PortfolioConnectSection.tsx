@@ -1,16 +1,20 @@
 import React from "react";
-import Section from "../../../components/layout/Section.tsx";
-import Article from "../../../components/layout/Article.tsx";
+import PortfolioSection from "./PortfolioSection";
+import Article from "../../../components/layout/Article";
 import Container from "../../../components/layout/Container";
-import Flex from "../../../components/layout/Flex.tsx";
-import Icon from "../../../components/ui/Icon.tsx";
-import Card from "../../../components/ui/Card.tsx";
-import Form from "../../../components/form/Form.tsx";
+import Row from "../../../components/layout/Row";
+import Column from "../../../components/layout/Column";
+import Icon from "../../../components/ui/Icon";
+import Card from "../../../components/ui/Card";
+import EmailForm from "../../../features/EmailForm";
 
-function Arrow(): React.JSX.Element
+function LinkIcon(): React.JSX.Element
 {
     return (
-        <p>Arrow</p>
+        <Icon src="/link-icon.png"
+              alt="Link icon"
+              size="2rem"
+        />
     );
 }
 
@@ -19,23 +23,36 @@ type LinkCardProps =
     iconPath: string;
     iconAlt?: string;
     siteName: string;
+    siteLink: string;
     description: string;
 }
 
-function LinkCard({iconPath, iconAlt, siteName, description}: LinkCardProps): React.JSX.Element
+function LinkCard(
+{
+    iconPath, iconAlt,
+    siteName,
+    siteLink,
+    description}: LinkCardProps): React.JSX.Element
 {
     return (
         <Card>
-            <Flex>
-                <Flex>
-                    <Flex type="col">
-                        <Icon src={`/assets/images/${iconPath}`} alt={iconAlt} />
-                        <p>{siteName}</p>
-                    </Flex>
-                    <p>{description}</p>
-                </Flex>
-                <Arrow />
-            </Flex>
+            <a href={`${siteLink}`}
+               className="no-underline"
+            >
+                <Row>
+                    <Row justify="start">
+                        <Icon src={`${iconPath}`}
+                              alt={iconAlt}
+                              size="2rem"
+                        />
+                        <Column gap={0}>
+                            <p>{siteName}</p>
+                            <p>{description}</p>
+                        </Column>
+                    </Row>
+                    <LinkIcon />
+                </Row>
+            </a>
         </Card>
     );
 }
@@ -44,91 +61,29 @@ function LinksArticle(): React.JSX.Element
 {
     return (
         <Article>
-            <Flex>
-                <LinkCard iconPath="github" iconAlt="github" siteName="github" description="My public projects" />
-                <LinkCard iconPath="linkedin" iconAlt="github" siteName="linkedin" description="LinkedIn" />
-            </Flex>
+            <Column align="start">
+                <LinkCard iconPath="/logos/github-logo.png"
+                          iconAlt="Github Logo Icon"
+                          siteName="Github"
+                          siteLink="https://github.com/mykalsullivan"
+                          description="My public projects" />
+                <LinkCard iconPath="/logos/linkedin-logo.png"
+                          iconAlt="LinkedIn Logo Icon"
+                          siteName="LinkedIn"
+                          siteLink="https://www.linkedin.com/in/mykal-sullivan/"
+                          description="LinkedIn" />
+                <LinkCard iconPath="/mail-icon.png"
+                          iconAlt="Email Icon"
+                          siteName="Email"
+                          siteLink="mailto:mykalsullivan@duck.com"
+                          description="Email" />
+                <LinkCard iconPath="/phone-icon.png"
+                          iconAlt="Phone Icon"
+                          siteName="Phone"
+                          siteLink="tel:5014497228"
+                          description="Give a call or text directly!" />
+            </Column>
         </Article>
-    );
-}
-
-function NameFormField(): React.JSX.Element
-{
-    return (
-        <Flex type="col" align="start" gap={2}>
-            <p>Name:</p>
-            <div className="
-                w-full
-                h-10
-                bg-gray-700
-                rounded-lg
-            ">
-            </div>
-        </Flex>
-    );
-}
-
-function EmailFormField(): React.JSX.Element
-{
-    return (
-        <Flex type="col" align="start" gap={2}>
-            <p>Email:</p>
-            <div className="
-                w-full
-                h-10
-                bg-gray-700
-                rounded-lg
-            ">
-            </div>
-        </Flex>
-    );
-}
-
-function SubjectFormField(): React.JSX.Element
-{
-    return (
-        <Flex type="col" align="start" gap={2}>
-            <p>Subject:</p>
-            <div className="
-                w-full
-                h-10
-                bg-gray-700
-                rounded-lg
-            ">
-            </div>
-        </Flex>
-    );
-}
-
-function MessageFormField(): React.JSX.Element
-{
-    return (
-        <Flex type="col" align="start" gap={2}>
-            <p>Message:</p>
-            <div className="
-                w-full
-                h-10
-                bg-gray-700
-                rounded-lg
-            ">
-            </div>
-        </Flex>
-    );
-}
-
-function EmailForm(): React.JSX.Element
-{
-    return (
-        <Form>
-            <Flex type="col">
-                <Flex>
-                    <NameFormField />
-                    <EmailFormField />
-                </Flex>
-                <SubjectFormField />
-                <MessageFormField />
-            </Flex>
-        </Form>
     );
 }
 
@@ -136,17 +91,7 @@ function EmailFormArticle(): React.JSX.Element
 {
     return (
         <Article>
-            <div className="
-                mx-auto
-                max-w-2xl
-                bg-neutral-900
-                rounded-xl
-            ">
-                <Container>
-                    <h1 className="text-2xl mb-4">...or, reach out now (if you would like)</h1>
-                    <EmailForm />
-                </Container>
-            </div>
+            <EmailForm />
         </Article>
     );
 }
@@ -154,11 +99,16 @@ function EmailFormArticle(): React.JSX.Element
 function PortfolioConnectSection(): React.JSX.Element
 {
     return (
-        <Section id="connect">
-            <h1 className="text-4xl">Let's connect!</h1>
-            <LinksArticle />
-            <EmailFormArticle />
-        </Section>
+        <PortfolioSection
+            id="connect"
+            title="Let's Connect!"
+            description="Have something you want to work on? Let me know! I am always open to new opportunties
+                         to learn and make something new.">
+            <Row>
+                <LinksArticle />
+                <EmailFormArticle />
+            </Row>
+        </PortfolioSection>
     );
 }
 

@@ -1,9 +1,13 @@
 import React from "react";
+import PortfolioSection from "./PortfolioSection";
 import Section from "../../../components/layout/Section";
 import Article from "../../../components/layout/Article";
-import Flex from "../../../components/layout/Flex";
+import Box from "../../../components/layout/Box";
+import Row from "../../../components/layout/Row.tsx";
+import Column from "../../../components/layout/Column.tsx";
 import Card from "../../../components/ui/Card";
 import Icon from "../../../components/ui/Icon";
+import Divider from "../../../components/layout/Divider";
 
 type SkillCardProps =
 {
@@ -15,147 +19,180 @@ type SkillCardProps =
 function SkillCard({name, iconPath, iconAlt}: SkillCardProps): React.JSX.Element
 {
     return (
-        <div>
+        <Box height={120} width={120}>
             <Card>
-                <Flex type="col">
-                    <Icon src={`/assets/images/${iconPath}`} alt={iconAlt} />
-                    <p className="text-center">{name}</p>
-                </Flex>
+                <Column items="center" gap={2}>
+                    <Icon src={`/logos/${iconPath}`} alt={iconAlt} size={"75px"}/>
+                    <p className="font-bold">{name}</p>
+                </Column>
             </Card>
+        </Box>
+    );
+}
+
+type SkillTagProps =
+{
+    title: string;
+}
+
+function SkillTag({title}: SkillTagProps): React.JSX.Element
+{
+    return (
+        <p className="bg-neutral-800 text-white">{title}</p>
+    );
+}
+
+type SkillListProps =
+{
+    children: React.ReactNode;
+}
+
+function SkillList({children}: SkillListProps): React.JSX.Element
+{
+    return (
+        <Row justify="start" gap={4} wrap>
+            {children}
+        </Row>
+    );
+}
+
+type SkillsSubsectionProps =
+{
+    title?: string;
+    description?: string;
+    children: React.ReactNode;
+}
+
+function SkillsSubsection({title, description, children}: SkillsSubsectionProps): React.JSX.Element
+{
+    return (
+        <div>
+            <Row justify="center">
+                <h3 className="text-lg">{title}</h3>
+                {description && <h3 className="text-lg">{description}</h3>}
+            </Row>
+            <div className="my-4">
+                {children}
+            </div>
         </div>
     );
 }
 
-function SkillsLanguages(): React.JSX.Element
+type SkillsArticleProps =
+{
+    title: string;
+    description?: string;
+    children: React.ReactNode;
+}
+
+function SkillsArticle({title, description, children}: SkillsArticleProps): React.JSX.Element
 {
     return (
         <Article>
-            <h2>Programming languages:</h2>
-            <Flex type="wrap" align="start" gap={4}>
-                <SkillCard name="C++" iconPath="path" iconAlt="C++ Icon" />
-                <SkillCard name="JavaScript" iconPath="path" iconAlt="JavaScript Icon" />
-                <SkillCard name="TypeScript" iconPath="path" iconAlt="TypeScript Icon" />
-                <SkillCard name="HTML" iconPath="path" iconAlt="HTML Icon" />
-                <SkillCard name="CSS" iconPath="path" iconAlt="CSS Icon" />
-                <SkillCard name="Java" iconPath="path" iconAlt="Java Icon" />
-                <SkillCard name="Go" iconPath="path" iconAlt="Go Icon" />
-                <SkillCard name="C#" iconPath="path" iconAlt="C# Icon" />
-                <SkillCard name="Python" iconPath="path" iconAlt="Python Icon" />
-                <SkillCard name="Bash" iconPath="path" iconAlt="Bash Icon" />
-                <SkillCard name="PowerShell" iconPath="path" iconAlt="PowerShell Icon" />
-                <SkillCard name="SQL" iconPath="path" iconAlt="SQL Icon" />
-            </Flex>
+            <Column items="center">
+                <h2 className="text-2xl">{title}</h2>
+                <p className="text-lg">{description}</p>
+            </Column>
+            {children}
         </Article>
     );
 }
 
-function SkillsFrameworks(): React.JSX.Element
+function SystemsAndLowLevelProgramming(): React.JSX.Element
 {
     return (
-        <Article>
-            <h2>Programming frameworks:</h2>
-            <Flex type="wrap" align="start" gap={4}>
-                <SkillCard name="Qt" iconPath="path" iconAlt="alt" />
-                <SkillCard name="React.js" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Tailwind" iconPath="path" iconAlt="alt" />
-                <SkillCard name="EnTT" iconPath="path" iconAlt="alt" />
-                <SkillCard name="SDL2" iconPath="path" iconAlt="alt" />
-                <SkillCard name=".NET" iconPath="path" iconAlt="alt" />
-            </Flex>
-        </Article>
+        <SkillsArticle
+            title="Systems & Low-Level Programming"
+            description="High-performance software... blah blah blah">
+            <SkillsSubsection>
+                <SkillList>
+                    <SkillCard name="C++" iconPath="cpp-logo.png" iconAlt="C++ logo" />
+                    <SkillCard name="C" iconPath="c-logo.png" iconAlt="C logo" />
+                    <SkillCard name="Rust" iconPath="rust-logo.png" iconAlt="Rust logo" />
+                    <SkillCard name="Golang" iconPath="golang-logo.png" iconAlt="Golang logo" />
+                    <SkillCard name="Bash" iconPath="bash-logo.png" iconAlt="Bash icon" />
+                    <SkillCard name="PowerShell" iconPath="ps-logo.png" iconAlt="PowerShell logo" />
+                    <SkillCard name="PostgreSQL" iconPath="postgresql-logo.png" iconAlt="PostgreSQL logo" />
+                </SkillList>
+            </SkillsSubsection>
+        </SkillsArticle>
     );
 }
 
-function SkillsLibraries(): React.JSX.Element
+function DevOpsAndInfrastructure(): React.JSX.Element
 {
     return (
-        <Article>
-            <h2>Programming libraries:</h2>
-            <Flex type="row" gap={4}>
-                <SkillCard name="Ncurses" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Ncurses" iconPath="path" iconAlt="alt" />
-            </Flex>
-        </Article>
+        <SkillsArticle title="DevOps & Infrastructure" description="Web sites and dick">
+            <SkillsSubsection title="Languages:">
+                <SkillList>
+                    <></>
+                </SkillList>
+            </SkillsSubsection>
+        </SkillsArticle>
     );
 }
 
-function SkillsTechnologies(): React.JSX.Element
+function NetworkingAndSecurity(): React.JSX.Element
 {
     return (
-        <Article>
-            <h2>Technologies:</h2>
-            <Flex type="row" gap={4}>
-                <SkillCard name="Qt" iconPath="path" iconAlt="Bash Icon" />
-                <SkillCard name="Ncurses" iconPath="path" iconAlt="SQL Icon" />
-            </Flex>
-        </Article>
+        <SkillsArticle title="Infrastructure & Networking" description="Crazy cool computer shiz">
+            <SkillsSubsection title="Languages:">
+                <SkillList>
+                    <></>
+                </SkillList>
+            </SkillsSubsection>
+        </SkillsArticle>
     );
 }
 
-function SkillsTools(): React.JSX.Element
+function GraphicsAndGameDevelopment(): React.JSX.Element
 {
     return (
-        <Article>
-            <h2>Tools:</h2>
-            <Flex type="row" gap={4}>
-                <SkillCard name="CMake" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Gradle" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Vite" iconPath="path" iconAlt="alt" />
-                <SkillCard name="NPM" iconPath="path" iconAlt="alt" />
-                <SkillCard name="CLion" iconPath="path" iconAlt="alt" />
-                <SkillCard name="IntelliJ IDEA" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Rider" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Webstorm" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Android Studio" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Unreal Editor" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Blender" iconPath="path" iconAlt="alt" />
-                <SkillCard name="LTspice" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Visual Studio/Visual Studio Code" iconPath="path" iconAlt="alt" />
-                <SkillCard name="Vim" iconPath="path" iconAlt="alt" />
-            </Flex>
-        </Article>
+        <SkillsArticle title="Game Development & Graphics" description="Game stuff">
+            <SkillsSubsection>
+                <SkillList>
+                    <></>
+                </SkillList>
+            </SkillsSubsection>
+            <SkillsSubsection title="Key skills:">
+                <SkillList>
+                    <></>
+                </SkillList>
+            </SkillsSubsection>
+            <SkillsSubsection title="Tools:">
+                <SkillList>
+                    <></>
+                </SkillList>
+            </SkillsSubsection>
+        </SkillsArticle>
     );
 }
 
-function SkillsInfrastructure(): React.JSX.Element
+function BackendServices(): React.JSX.Element
 {
     return (
-        <Article>
-            <h2>Infrastructure Tools:</h2>
-            <Flex type="row" gap={4}>
-                <SkillCard name={"Cisco Hardware"} iconPath={"path"} />
-                <SkillCard name={"pfSense"} iconPath={"path"} />
-                <SkillCard name={"Wireguard"} iconPath={"path"} />
-                <SkillCard name={"Ansible"} iconPath={"path"} />
-                <SkillCard name={"QEMU/KVM"} iconPath={"path"} />
-                <SkillCard name={"PPP"} iconPath={"path"} />
-                <SkillCard name={"Dial-up"} iconPath={"path"} />
-                <SkillCard name={"Legacy Operating Systems"} iconPath={"path"} />
-                <SkillCard name={"Linux"} iconPath={"path"} />
-                <SkillCard name={"Asterisk VoIP"} iconPath={"path"} />
-                <SkillCard name={"CG-NAT Networking"} iconPath={"path"} />
-                <SkillCard name={"Virtualized Network Hardware"} iconPath={"path"} />
-                <SkillCard name={"Docker"} iconPath={"path"} />
-                <SkillCard name={"Windows Server"} iconPath={"path"} />
-                <SkillCard name={"Debian"} iconPath={"path"} />
-                <SkillCard name={"Arch Linux"} iconPath={"path"} />
-                <SkillCard name={"RHEL"} iconPath={"path"} />
-            </Flex>
-        </Article>
-    );
+        <SkillsArticle title="Backend Services" description="Web sites and dick">
+            <></>
+        </SkillsArticle>
+        );
 }
 
-function Skills(): React.JSX.Element
+function WebDevelopment(): React.JSX.Element
 {
     return (
-        <>
-            <SkillsLanguages />
-            <SkillsFrameworks />
-            <SkillsLibraries />
-            <SkillsTechnologies />
-            <SkillsTools />
-            <SkillsInfrastructure />
-        </>
+        <SkillsArticle title="Web Development" description="Web sites and dick">
+            <SkillsSubsection>
+                <SkillList>
+                    <SkillCard name="HTML" iconPath="html-logo.png" iconAlt="HTML icon" />
+                    <SkillCard name="CSS" iconPath="css-logo.png" iconAlt="CSS icon" />
+                    <SkillCard name="JavaScript" iconPath="js-logo.png" iconAlt="JavaScript icon" />
+                    <SkillCard name="TypeScript" iconPath="ts-logo.png" iconAlt="TypeScript icon" />
+                    <SkillCard name="React.js" iconPath="reactjs-logo.png" iconAlt="React.js icon" />
+                    <SkillCard name="Tailwind" iconPath="tailwind-logo.png" iconAlt="Tailwind icon" />
+                    <SkillCard name="Node.js" iconPath="nodejs-logo.png" iconAlt="Node.js icon" />
+                </SkillList>
+            </SkillsSubsection>
+        </SkillsArticle>
     );
 }
 
@@ -163,10 +200,15 @@ function PortfolioSkillsSection(): React.JSX.Element
 {
     return (
         <>
-            <Section id="skills">
-                <h1 className="text-4xl">Skills</h1>
-                <Skills />
-            </Section>
+            <PortfolioSection id="skills" title="Skills">
+                <SystemsAndLowLevelProgramming />
+                <DevOpsAndInfrastructure />
+                <NetworkingAndSecurity />
+                <GraphicsAndGameDevelopment />
+                <BackendServices />
+                <WebDevelopment />
+            </PortfolioSection>
+            <Divider />
         </>
     );
 }

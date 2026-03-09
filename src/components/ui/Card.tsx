@@ -1,4 +1,5 @@
 import React from "react";
+import Surface from "./Surface";
 
 type CardProps =
 {
@@ -8,16 +9,11 @@ type CardProps =
 function Card({children}: CardProps): React.JSX.Element
 {
     return (
-        <div className="
-                w-full
-                h-full
-                border
-                border-neutral-700
-                rounded-xl
-            "
-        >
-            {children}
-        </div>
+        <Surface>
+            <div className="m-2">
+                {children}
+            </div>
+        </Surface>
     );
 }
 

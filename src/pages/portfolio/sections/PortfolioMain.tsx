@@ -1,18 +1,19 @@
 import React from "react";
-import Main from "../../../components/layout/Main.tsx";
-import PortfolioSummarySection from "./PortfolioSummarySection.tsx";
-import PortfolioSkillsSection from "./PortfolioSkillsSection.tsx";
-import PortfolioConnectSection from "./PortfolioConnectSection.tsx";
-import Divider from "../../../components/ui/Divider.tsx";
+import Main from "../../../components/layout/Main";
+import PortfolioHero from "./PortfolioHero";
+import PortfolioSkillsSection from "./PortfolioSkillsSection";
+import PortfolioCertificationsSection from "./PortfolioCertificationsSection";
+import PortfolioProjectsSection from "./PortfolioProjectsSection";
+import PortfolioConnectSection from "./PortfolioConnectSection";
 
 function PortfolioMain(): React.JSX.Element
 {
     return (
         <Main>
-            <PortfolioSummarySection />
-            <Divider />
+            <PortfolioHero />
             <PortfolioSkillsSection />
-            <Divider />
+            <PortfolioCertificationsSection />
+            <PortfolioProjectsSection />
             <PortfolioConnectSection />
         </Main>
     );

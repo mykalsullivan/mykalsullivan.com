@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react";
-import Container from "./Container";
+import SectionContent from "./SectionContent";
 
 type HeroProps =
 {
@@ -10,17 +10,17 @@ type HeroProps =
 function Hero({children, id}: HeroProps): React.JSX.Element
 {
     return (
-        <div id={id}
-             className="
-                flex flex-col
-                max-w-350
+        <section id={id}
+            className="
+                max-w-400
                 mx-auto
+                px-4
             "
         >
-            <Container>
+            <SectionContent>
                 {children}
-            </Container>
-        </div>
+            </SectionContent>
+        </section>
     );
 }
 

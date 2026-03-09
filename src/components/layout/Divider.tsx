@@ -6,7 +6,7 @@ function Divider(): React.JSX.Element
         <hr className="
             border-t
             border-neutral-700
-            py-2
+            mt-10
         "/>
     );
 }

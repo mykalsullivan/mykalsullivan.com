@@ -10,7 +10,8 @@ function Article({children, id}: ArticleProps): React.JSX.Element
 {
     return <article id={id}
         className="
-            p-4
+            py-4
+            w-full
         "
     >
         {children}

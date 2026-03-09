@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "./Container";
+import SectionContent from "./SectionContent";
 
 type SectionProps =
 {
@@ -12,15 +12,14 @@ function Section({children, id}: SectionProps): React.JSX.Element
     return (
         <section id={id}
             className="
-                max-w-auto
-                mx-4
-                mt-2
-                mb-4
+                max-w-350
+                mx-auto
+                px-4
             "
         >
-            <Container>
+            <SectionContent>
                 {children}
-            </Container>
+            </SectionContent>
         </section>
     );
 }

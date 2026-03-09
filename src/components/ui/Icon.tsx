@@ -1,29 +1,20 @@
 import React from "react";
+import Box from "../layout/Box";
+import Image from "./Image";
 
 type IconProps =
 {
     src: string;
-    alt?: string;
-    size?: "sm" | "md" | "lg" | "xl";
+    alt: string;
+    size: string;
 }
 
-const sizeMap: Record<string, string> =
-{
-    sm: "w-6 h-6",
-    md: "w-8 h-8",
-    lg: "w-10 h-10",
-    xl: "w-12 h-12"
-};
-
-function Icon({src, alt = "logo", size = "xl"}: IconProps): React.JSX.Element
+function Icon({src, alt, size}: IconProps): React.JSX.Element
 {
     return (
-        <img className={`
-            ${sizeMap[size]}
-            rounded-xl
-        `}
-        alt={alt}
-        src={src} />
+        <Box height={size} width={size}>
+            <Image src={`/assets/images/icons/${src}`} alt={alt} />
+        </Box>
     );
 }
 

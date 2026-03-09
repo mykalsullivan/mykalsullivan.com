@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "./Container";
 
 type MainProps =
 {
@@ -9,15 +8,8 @@ type MainProps =
 function Main({children}: MainProps)
 {
     return (
-        <main className="
-                flex flex-col
-                max-w-300
-                mx-auto
-            "
-        >
-            <Container>
-                {children}
-            </Container>
+        <main>
+            {children}
         </main>
     );
 }
