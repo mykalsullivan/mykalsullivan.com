@@ -1,30 +1,32 @@
 import React from "react";
-import PortfolioSection from "./PortfolioSection";
+import SectionHeader from "./SectionHeader.tsx";
 import Section from "../../../components/layout/Section";
-import Article from "../../../components/layout/Article";
 import Box from "../../../components/layout/Box";
+import Container from "../../../components/layout/Container";
 import Row from "../../../components/layout/Row.tsx";
 import Column from "../../../components/layout/Column.tsx";
 import Card from "../../../components/ui/Card";
 import Icon from "../../../components/ui/Icon";
 import Divider from "../../../components/layout/Divider";
 
-type SkillCardProps =
+type LogoCardProps =
 {
     name: string;
     iconPath: string;
-    iconAlt?: string;
+    iconAlt: string;
 }
 
-function SkillCard({name, iconPath, iconAlt}: SkillCardProps): React.JSX.Element
+function LogoCard({name, iconPath, iconAlt}: LogoCardProps): React.JSX.Element
 {
     return (
-        <Box height={120} width={120}>
+        <Box height={160} width={160}>
             <Card>
-                <Column items="center" gap={2}>
-                    <Icon src={`/logos/${iconPath}`} alt={iconAlt} size={"75px"}/>
-                    <p className="font-bold">{name}</p>
-                </Column>
+                <Container>
+                    <Column items="center" gap={6}>
+                        <Icon src={`/logos/${iconPath}`} alt={iconAlt} size="80px" />
+                        <span className="font-bold">{name}</span>
+                    </Column>
+                </Container>
             </Card>
         </Box>
     );
@@ -88,128 +90,161 @@ type SkillsArticleProps =
 function SkillsArticle({title, description, children}: SkillsArticleProps): React.JSX.Element
 {
     return (
-        <Article>
-            <Column items="center">
+        <article className="mb-20">
+            <Column items="start">
                 <h2 className="text-2xl">{title}</h2>
                 <p className="text-lg">{description}</p>
             </Column>
             {children}
-        </Article>
+        </article>
     );
 }
 
-function SystemsAndLowLevelProgramming(): React.JSX.Element
+type CardInfo =
 {
-    return (
-        <SkillsArticle
-            title="Systems & Low-Level Programming"
-            description="High-performance software... blah blah blah">
-            <SkillsSubsection>
-                <SkillList>
-                    <SkillCard name="C++" iconPath="cpp-logo.png" iconAlt="C++ logo" />
-                    <SkillCard name="C" iconPath="c-logo.png" iconAlt="C logo" />
-                    <SkillCard name="Rust" iconPath="rust-logo.png" iconAlt="Rust logo" />
-                    <SkillCard name="Golang" iconPath="golang-logo.png" iconAlt="Golang logo" />
-                    <SkillCard name="Bash" iconPath="bash-logo.png" iconAlt="Bash icon" />
-                    <SkillCard name="PowerShell" iconPath="ps-logo.png" iconAlt="PowerShell logo" />
-                    <SkillCard name="PostgreSQL" iconPath="postgresql-logo.png" iconAlt="PostgreSQL logo" />
-                </SkillList>
-            </SkillsSubsection>
-        </SkillsArticle>
-    );
+    name: string;
+    path: string;
 }
 
-function DevOpsAndInfrastructure(): React.JSX.Element
+function TechnologySection(title: string, cards: CardInfo[]): React.JSX.Element
 {
     return (
-        <SkillsArticle title="DevOps & Infrastructure" description="Web sites and dick">
-            <SkillsSubsection title="Languages:">
-                <SkillList>
-                    <></>
-                </SkillList>
-            </SkillsSubsection>
+        <SkillsArticle title={title}>
+            <SkillList>
+                {
+                    cards.map((card: CardInfo): React.JSX.Element =>
+                        <LogoCard name={card.name} iconPath={card.path} iconAlt={`${card.name} logo`}/>
+                    )
+                }
+            </SkillList>
         </SkillsArticle>
     );
 }
 
-function NetworkingAndSecurity(): React.JSX.Element
+function ProgrammingLanguages(): React.JSX.Element
+{
+    const cards: CardInfo[] =
+    [
+        {name: "C/C++", path: "cpp-logo.png"},
+        {name: "Rust", path: "rust-logo.png"},
+        {name: "Golang", path: "golang-logo.png"},
+        {name: "Java", path: "java-logo.png"},
+        {name: "Python", path: "python-logo.png"},
+        {name: "C#", path: "cs-logo.png"},
+        {name: "Dart", path: "dart-logo.png"},
+        {name: "HTML", path: "html-logo.png"},
+        {name: "CSS", path: "css-logo.png"},
+        {name: "JavaScript", path: "js-logo.png"},
+        {name: "TypeScript", path: "ts-logo.png"},
+        {name: "SQL", path: "sql-logo.png"}
+    ];
+
+    return TechnologySection("Programming Languages", cards);
+}
+
+function InfrastructureTechnologies(): React.JSX.Element
+{
+    const cards: CardInfo[] =
+    [
+        {name: "Linux", path: "linux-logo.png"},
+        {name: "Bash", path: "bash-logo.png"},
+        {name: "PowerShell", path: "ps-logo.png"},
+        {name: "Docker", path: "docker-logo.png"},
+        {name: "Ansible", path: "ansible-logo.png"},
+        {name: "Nginx", path: "nginx-logo.png"},
+        {name: "HAProxy", path: "haproxy-logo.png"},
+        {name: "Microsoft Azure", path: "azure-logo.png"},
+        {name: "PostgreSQL", path: "postgresql-logo.png"},
+        {name: "QEMU/KVM", path: "qemu-logo.png"}
+    ];
+
+    return TechnologySection("Infrastructure & Cloud", cards);
+}
+
+function WebTechnologies(): React.JSX.Element
+{
+    const cards: CardInfo[] =
+    [
+        {name: "React.js", path: "reactjs-logo.png"},
+        {name: "Tailwind", path: "tailwind-logo.png"},
+        {name: "Node.js", path: "nodejs-logo.png"},
+        {name: "Prisma", path: "prisma-logo.png"},
+        {name: "Jekyll", path: "jekyll-logo.png"}
+    ];
+
+    return TechnologySection("Web Technologies", cards);
+}
+
+function GraphicsAndGameDevelopmentTechnologies(): React.JSX.Element
+{
+    const cards: CardInfo[] =
+    [
+        {name: "OpenGL", path: "opengl-logo.png"},
+        {name: "WebGPU", path: "webgpu-logo.png"},
+        {name: "Unreal", path: "uengine-logo.png"},
+        {name: "Blender", path: "blender-logo.png"}
+    ];
+
+    return TechnologySection("Graphics & Game Development", cards);
+}
+
+function UIFrameworks(): React.JSX.Element
+{
+    const cards: CardInfo[] =
+    [
+        {name: "Qt", path: "qt-logo.png"},
+        {name: ".NET", path: "dotnet-logo.png"},
+        {name: "JavaFX", path: "java-logo.png"},
+        {name: "Flutter", path: "flutter-logo.png"}
+    ];
+
+    return TechnologySection("UI Frameworks", cards);
+}
+
+function DSPTechnologies(): React.JSX.Element
+{
+    const cards: CardInfo[] =
+    [
+        {name: "JUCE", path: "juce-logo.png"},
+        {name: "LTspice", path: "ltspice-logo.png"}
+    ];
+
+    return TechnologySection("DSP / Audio", cards);
+}
+
+function TechnologiesSection(): React.JSX.Element
 {
     return (
-        <SkillsArticle title="Infrastructure & Networking" description="Crazy cool computer shiz">
-            <SkillsSubsection title="Languages:">
-                <SkillList>
-                    <></>
-                </SkillList>
-            </SkillsSubsection>
-        </SkillsArticle>
+        <section>
+            <ProgrammingLanguages />
+            <InfrastructureTechnologies />
+            <WebTechnologies />
+            <GraphicsAndGameDevelopmentTechnologies />
+            <UIFrameworks />
+            <DSPTechnologies />
+        </section>
     );
 }
 
-function GraphicsAndGameDevelopment(): React.JSX.Element
+function Domains(): React.JSX.Element
 {
     return (
-        <SkillsArticle title="Game Development & Graphics" description="Game stuff">
-            <SkillsSubsection>
-                <SkillList>
-                    <></>
-                </SkillList>
-            </SkillsSubsection>
-            <SkillsSubsection title="Key skills:">
-                <SkillList>
-                    <></>
-                </SkillList>
-            </SkillsSubsection>
-            <SkillsSubsection title="Tools:">
-                <SkillList>
-                    <></>
-                </SkillList>
-            </SkillsSubsection>
-        </SkillsArticle>
-    );
-}
+        <section>
 
-function BackendServices(): React.JSX.Element
-{
-    return (
-        <SkillsArticle title="Backend Services" description="Web sites and dick">
-            <></>
-        </SkillsArticle>
-        );
-}
-
-function WebDevelopment(): React.JSX.Element
-{
-    return (
-        <SkillsArticle title="Web Development" description="Web sites and dick">
-            <SkillsSubsection>
-                <SkillList>
-                    <SkillCard name="HTML" iconPath="html-logo.png" iconAlt="HTML icon" />
-                    <SkillCard name="CSS" iconPath="css-logo.png" iconAlt="CSS icon" />
-                    <SkillCard name="JavaScript" iconPath="js-logo.png" iconAlt="JavaScript icon" />
-                    <SkillCard name="TypeScript" iconPath="ts-logo.png" iconAlt="TypeScript icon" />
-                    <SkillCard name="React.js" iconPath="reactjs-logo.png" iconAlt="React.js icon" />
-                    <SkillCard name="Tailwind" iconPath="tailwind-logo.png" iconAlt="Tailwind icon" />
-                    <SkillCard name="Node.js" iconPath="nodejs-logo.png" iconAlt="Node.js icon" />
-                </SkillList>
-            </SkillsSubsection>
-        </SkillsArticle>
+        </section>
     );
 }
 
 function PortfolioSkillsSection(): React.JSX.Element
 {
     return (
-        <>
-            <PortfolioSection id="skills" title="Skills">
-                <SystemsAndLowLevelProgramming />
-                <DevOpsAndInfrastructure />
-                <NetworkingAndSecurity />
-                <GraphicsAndGameDevelopment />
-                <BackendServices />
-                <WebDevelopment />
-            </PortfolioSection>
+        <Section id="skills">
+            <SectionHeader title="Skills"
+                           description="A general overview of the technologies I have used and my professional
+                                                 skills." />
+            <TechnologiesSection />
             <Divider />
-        </>
+        </Section>
     );
 }
 

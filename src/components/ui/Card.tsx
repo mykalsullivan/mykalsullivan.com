@@ -10,7 +10,7 @@ function Card({children}: CardProps): React.JSX.Element
 {
     return (
         <Surface>
-            <div className="m-2">
+            <div>
                 {children}
             </div>
         </Surface>

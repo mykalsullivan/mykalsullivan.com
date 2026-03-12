@@ -22,7 +22,6 @@ function Image(
             className={`
                 w-full
                 h-full
-                rounded-xl
                 ${aspectRatioString}
             `}
         />

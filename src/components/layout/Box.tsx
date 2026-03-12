@@ -2,7 +2,7 @@ import React from "react";
 
 type BoxProps =
 {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 
     width?: number | string;
     minWidth?: number | string;

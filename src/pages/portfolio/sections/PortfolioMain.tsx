@@ -1,21 +1,22 @@
 import React from "react";
-import Main from "../../../components/layout/Main";
 import PortfolioHero from "./PortfolioHero";
+import PortfolioSummarySection from "./PortfolioSummarySection";
 import PortfolioSkillsSection from "./PortfolioSkillsSection";
-import PortfolioCertificationsSection from "./PortfolioCertificationsSection";
 import PortfolioProjectsSection from "./PortfolioProjectsSection";
+import PortfolioCertificationsSection from "./PortfolioCertificationsSection";
 import PortfolioConnectSection from "./PortfolioConnectSection";
 
 function PortfolioMain(): React.JSX.Element
 {
     return (
-        <Main>
+        <main>
             <PortfolioHero />
+            <PortfolioSummarySection />
             <PortfolioSkillsSection />
-            <PortfolioCertificationsSection />
             <PortfolioProjectsSection />
+            <PortfolioCertificationsSection />
             <PortfolioConnectSection />
-        </Main>
+        </main>
     );
 }
 

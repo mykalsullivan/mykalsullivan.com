@@ -11,8 +11,9 @@ export default
         {
             fontFamily:
             {
-                sans: ["Arial", "Helvetica", "sans-serif"],
-                serif: ["Georgia", "Cambria", "serif"]
+                sans: ["Montserrat", "Helvetica", "sans-serif"],
+                serif: ["Georgia", "Cambria", "serif"],
+                game: ["SixtyFour", "sans-serif"]
             },
         }
     },

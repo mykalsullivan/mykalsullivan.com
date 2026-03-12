@@ -1,64 +1,103 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/layout/Header";
-import Navbar from "../components/layout/Navbar.tsx";
-import Row from "../components/layout/Row.tsx";
+import Navbar from "../components/layout/Navbar";
+import Box from "../components/layout/Box";
+import Container from "../components/layout/Container";
+import Row from "../components/layout/Row";
 import Icon from "../components/ui/Icon";
+import Card from "../components/ui/Card";
+
+type SiteHeaderProps =
+{
+    children: React.ReactNode;
+}
+
+function SiteHeaderOuter({children}: SiteHeaderProps): React.JSX.Element
+{
+    return (
+        <header className="
+                    sticky
+                    justify-center
+                    top-0 z-9999
+                    bg-black
+                    border-b border-neutral-700
+        ">
+            {children}
+        </header>
+    );
+}
+
+function SiteHeaderInner({children}: SiteHeaderProps): React.JSX.Element
+{
+    return (
+        <div className="
+                w-full
+                max-w-450
+                mx-auto
+                p-2
+            ">
+            {children}
+        </div>
+    );
+}
 
 function SiteHeaderLogo(): React.JSX.Element
 {
     return (
-        <Link className="
-                pr-4
-                text-neutral-400
-                no-underline
-                bg-black/50
-                rounded-lg
-                border
-                border-neutral-700
-            "
-              to="/">
-            <Row>
-                <Icon src="favicon.png" alt="Logo icon" size="3rem"/>
-                <span className="text-xl font-bold">Mykal Sullivan</span>
-            </Row>
-        </Link>
+        <Box>
+            <Link className="no-underline" to="/">
+                <Container>
+                    <Row>
+                        <Icon src="favicon.png" alt="Logo icon" size="3rem"/>
+                        <span className="text-xl font-bold">Mykal Sullivan</span>
+                    </Row>
+                </Container>
+            </Link>
+        </Box>
     );
 }
 
-function SiteHeader() : React.JSX.Element
+function ResumeCVButton(): React.JSX.Element
 {
     return (
-        <>
-            <div className="
-                sticky
-                flex
-                justify-center
-                top-0 z-9999
-                bg-black
-                border-b border-neutral-700
-            ">
-                <div className="
-                    w-full
-                    max-w-450
-                    mx-2 my-2
-                ">
-                    <Row justify="between">
-                        <SiteHeaderLogo />
-                        <Navbar>
-                            <Navbar.Link to="/blog">Blog</Navbar.Link>
-                            <Navbar.Link to="/about">About</Navbar.Link>
-                            <Navbar.Link to="https://www.github.com/mykalsullivan">
-                                <Icon src="/logos/github-logo.png" alt="Github logo" size="2rem"/>
-                            </Navbar.Link>
-                            <Navbar.Link to="https://www.linkedin.com/in/mykal-sullivan">
-                                <Icon src="/logos/linkedin-logo.png" alt="LinkedIn logo" size="2rem"/>
-                            </Navbar.Link>
-                        </Navbar>
-                    </Row>
-                </div>
-            </div>
-        </>
+        <Box>
+            <Container>
+                <a className="no-underline" href="/resume.pdf" download>Resume / CV</a>
+            </Container>
+        </Box>
+    );
+}
+
+function SiteHeaderNavbar(): React.JSX.Element
+{
+    return (
+        <Navbar>
+            <Navbar.Link to="https://www.github.com/mykalsullivan">
+                <Icon src="/logos/github-logo.png" alt="Github logo" size="2rem"/>
+            </Navbar.Link>
+            <Navbar.Link to="https://www.linkedin.com/in/mykal-sullivan">
+                <Icon src="/logos/linkedin-logo.png" alt="LinkedIn logo" size="2rem"/>
+            </Navbar.Link>
+        </Navbar>
+    );
+}
+
+function SiteHeader(): React.JSX.Element
+{
+    return (
+        <SiteHeaderOuter>
+            <SiteHeaderInner>
+                <Row justify="between">
+                    <SiteHeaderLogo />
+                    <Box>
+                        <Row>
+                            <ResumeCVButton />
+                            <SiteHeaderNavbar />
+                        </Row>
+                    </Box>
+                </Row>
+            </SiteHeaderInner>
+        </SiteHeaderOuter>
     );
 }
 

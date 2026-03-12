@@ -41,7 +41,6 @@ function Navbar({children}: NavbarProps): React.JSX.Element
         <nav className="mr-2">
             <ul className="
                 flex flex-row
-                my-auto
                 items-center
             ">
                 {children}

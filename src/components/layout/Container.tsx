@@ -8,10 +8,10 @@ type ContainerProps =
 function Container({children}: ContainerProps): React.JSX.Element
 {
     return (
-        <div className={`
+        <div className="
             mx-auto
-            p-4
-        `}>
+            p-2
+        ">
             {children}
         </div>
     );

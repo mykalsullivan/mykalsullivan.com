@@ -1,15 +1,14 @@
 import React from "react";
-import Main from "../../../components/layout/Main";
 import Hero from "../../../components/layout/Hero";
 
 function BlogMain(): React.JSX.Element
 {
     return (
-        <Main>
+        <main>
             <Hero>
                 <p>We got nothin'...</p>
             </Hero>
-        </Main>
+        </main>
     );
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
-import PortfolioSection from "./PortfolioSection";
-import Article from "../../../components/layout/Article";
+import Section from "../../../components/layout/Section";
+import SectionHeader from "./SectionHeader.tsx";
+import Box from "../../../components/layout/Box";
 import Container from "../../../components/layout/Container";
 import Row from "../../../components/layout/Row";
 import Column from "../../../components/layout/Column";
@@ -13,7 +14,7 @@ function LinkIcon(): React.JSX.Element
     return (
         <Icon src="/link-icon.png"
               alt="Link icon"
-              size="2rem"
+              size="1.5rem"
         />
     );
 }
@@ -24,91 +25,87 @@ type LinkCardProps =
     iconAlt?: string;
     siteName: string;
     siteLink: string;
-    description: string;
 }
 
 function LinkCard(
 {
     iconPath, iconAlt,
     siteName,
-    siteLink,
-    description}: LinkCardProps): React.JSX.Element
+    siteLink}: LinkCardProps): React.JSX.Element
 {
     return (
         <Card>
-            <a href={`${siteLink}`}
-               className="no-underline"
-            >
-                <Row>
-                    <Row justify="start">
-                        <Icon src={`${iconPath}`}
-                              alt={iconAlt}
-                              size="2rem"
-                        />
-                        <Column gap={0}>
+            <Container>
+                <a href={`${siteLink}`}
+                   className="no-underline"
+                >
+                    <Row>
+                        <Row justify="start">
+                            <Icon src={`${iconPath}`}
+                                  alt={`${iconAlt}`}
+                                  size="2rem"
+                            />
                             <p>{siteName}</p>
-                            <p>{description}</p>
-                        </Column>
+                        </Row>
+                        <LinkIcon />
                     </Row>
-                    <LinkIcon />
-                </Row>
-            </a>
+                </a>
+            </Container>
         </Card>
     );
 }
 
-function LinksArticle(): React.JSX.Element
+function LinkCardGroup(): React.JSX.Element
 {
     return (
-        <Article>
-            <Column align="start">
-                <LinkCard iconPath="/logos/github-logo.png"
-                          iconAlt="Github Logo Icon"
-                          siteName="Github"
-                          siteLink="https://github.com/mykalsullivan"
-                          description="My public projects" />
-                <LinkCard iconPath="/logos/linkedin-logo.png"
-                          iconAlt="LinkedIn Logo Icon"
-                          siteName="LinkedIn"
-                          siteLink="https://www.linkedin.com/in/mykal-sullivan/"
-                          description="LinkedIn" />
-                <LinkCard iconPath="/mail-icon.png"
-                          iconAlt="Email Icon"
-                          siteName="Email"
-                          siteLink="mailto:mykalsullivan@duck.com"
-                          description="Email" />
-                <LinkCard iconPath="/phone-icon.png"
-                          iconAlt="Phone Icon"
-                          siteName="Phone"
-                          siteLink="tel:5014497228"
-                          description="Give a call or text directly!" />
-            </Column>
-        </Article>
+        <Row align="start">
+            <LinkCard iconPath="/logos/github-logo.png"
+                      iconAlt="Github Logo Icon"
+                      siteName="Github"
+                      siteLink="https://github.com/mykalsullivan"/>
+            <LinkCard iconPath="/logos/linkedin-logo.png"
+                      iconAlt="LinkedIn Logo Icon"
+                      siteName="LinkedIn"
+                      siteLink="https://www.linkedin.com/in/mykal-sullivan/"/>
+        </Row>
     );
 }
 
-function EmailFormArticle(): React.JSX.Element
+function EmailFormCard(): React.JSX.Element
 {
     return (
-        <Article>
-            <EmailForm />
-        </Article>
+        <Box>
+            <Column>
+                <EmailForm />
+                <LinkCardGroup />
+            </Column>
+        </Box>
+    );
+}
+
+function ConnectionMessage(): React.JSX.Element
+{
+    return (
+        <Box maxWidth="50rem">
+            <Column items="start" align="start" gap={4}>
+                <p className="text-2xl font-bold">Project in-mind?</p>
+                <p className="text-2xl font-bold">Wanting to learn something new?</p>
+                <p className="text-2xl font-bold">Wanting to let me know what I can do to improve this page?</p>
+                <p className="text-2xl font-bold">I'm all ears.</p>
+            </Column>
+        </Box>
     );
 }
 
 function PortfolioConnectSection(): React.JSX.Element
 {
     return (
-        <PortfolioSection
-            id="connect"
-            title="Let's Connect!"
-            description="Have something you want to work on? Let me know! I am always open to new opportunties
-                         to learn and make something new.">
-            <Row>
-                <LinksArticle />
-                <EmailFormArticle />
-            </Row>
-        </PortfolioSection>
+        <Section id="connect">
+            <SectionHeader title="Let's connect!" />
+            <Column items="center">
+                <EmailFormCard />
+            </Column>
+        </Section>
     );
 }
 
